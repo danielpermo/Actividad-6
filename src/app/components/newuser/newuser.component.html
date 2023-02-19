@@ -1,4 +1,39 @@
-<div class="card mb-3">
+<h1 class="mb-5">NUEVO USUARIO</h1>
+<form [formGroup]="myForm" (ngSubmit)="saveDataForm()">
+  <div class="row mb-3">
+    <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="name" formControlName="name" placeholder="Introduzca nombre de usuario">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="surname" class="col-sm-2 col-form-label">Apellido</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="surname" formControlName="surname" placeholder="Introduzca apellido de usuario">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="email" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="email" formControlName="email" placeholder="Introduzca email de usuario">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="image" class="col-sm-2 col-form-label">Imagen</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="image" formControlName="image" placeholder="Introduzca url de imagen de usuario">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Guardar</button>
+</form>
+
+
+
+
+
+
+<!-- Código para usuario (mirar el CSS porque hay que pasarlo a /user/) -->
+<!-- <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-4">
         <img src="..." class="img-fluid rounded-start" alt="...">
@@ -17,4 +52,4 @@
         </div>
       </div>
     </div>
-</div>
+</div> -->
