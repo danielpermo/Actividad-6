@@ -1,18 +1,25 @@
 <header class="container border-bottom">
-  <ul class="nav justify-content-end">
-  <!-- <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
-  </li> -->
-  <li class="nav-item">
-    <a class="nav-link" href="/home">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/newuser">Nuevo usuario</a>
-  </li>
-  <!-- <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
-  </li> -->
-</ul>
+  <div class="container d-flex">
+    <div class="p-2 flex-grow-1">
+      <img src="/assets/logo.png" alt="" class="logo">
+    </div>
+    <div class="p-2">
+      <ul class="nav">
+      <!-- <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Active</a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" href="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/newuser">Nuevo usuario</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link disabled">Disabled</a>
+      </li> -->
+    </ul>
+    </div>
+  </div>
 </header>
 <main class="container">
   <router-outlet></router-outlet>
