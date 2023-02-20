@@ -8,10 +8,10 @@ import { Validators, FormControl, FormGroup } from '@angular/forms';
 })
 export class NewuserComponent {
 
-  myForm: FormGroup
+  newUserForm: FormGroup
 
   constructor() {
-    this.myForm = new FormGroup({
+    this.newUserForm = new FormGroup({
       name: new FormControl("", [
         Validators.required
       ]),
@@ -28,7 +28,7 @@ export class NewuserComponent {
   }
 
   saveDataForm() {
-    console.log(this.myForm.value);
+    console.log(this.newUserForm.value);
   }
 
 }
