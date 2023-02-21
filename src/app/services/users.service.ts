@@ -8,8 +8,7 @@ import { lastValueFrom, Observable } from 'rxjs';
 })
 export class UsersService {
 
- 
-  private usersArr: User[] = []
+
   private apiUrl: string = "https://peticiones.online/api/users"
   apiObject: any = {}
 
@@ -17,10 +16,8 @@ export class UsersService {
 
   }
   
-  getUsers(): Promise<User[]> {
-    // console.log(lastValueFrom(this.httpClient.get<User[]>(this.apiUrl))); //quitar esto
-    this.apiObject = lastValueFrom(this.httpClient.get<User[]>(this.apiUrl));
-    console.log(this.apiObject);
+  getUsers(): Promise<any> {
+    this.apiObject = lastValueFrom(this.httpClient.get<any>(this.apiUrl));
     return this.apiObject;
    }
 
