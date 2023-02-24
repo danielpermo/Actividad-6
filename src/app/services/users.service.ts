@@ -11,6 +11,7 @@ export class UsersService {
 
   private apiUrl: string = "https://peticiones.online/api/users"
   apiObject: any = {}
+  userObject: any = {}
 
   constructor(private httpClient: HttpClient) {
 
@@ -19,6 +20,11 @@ export class UsersService {
   getUsers(): Promise<any> {
     this.apiObject = lastValueFrom(this.httpClient.get<any>(this.apiUrl));
     return this.apiObject;
-   }
+  }
 
+  getUserbyId(pId: string): Promise<any> {
+    this.userObject = lastValueFrom(this.httpClient.get<any>(this.apiUrl+`/${pId}`));
+    return this.userObject;
+  }
+  
 }
