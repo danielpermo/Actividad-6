@@ -34,3 +34,7 @@
 	--bs-card-group-margin: 0.75rem;
 	word-wrap: break-word;
 }
+.border-primary {
+	--bs-border-opacity: 1;
+	border-color: #08214762 !important;
+}
