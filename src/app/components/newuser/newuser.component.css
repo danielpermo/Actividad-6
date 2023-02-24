@@ -15,6 +15,10 @@
 	--bs-btn-disabled-bg: #082147;
 	--bs-btn-disabled-border-color: #082147;
 }
+.error{
+	color: red;
+	font-size: 10px;
+}
 /* Pasar esto a /user/ */
 /* .btn-outline-primary {
 	--bs-btn-color: grey;

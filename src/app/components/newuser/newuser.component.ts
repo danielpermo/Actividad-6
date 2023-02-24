@@ -15,11 +15,12 @@ export class NewuserComponent {
       name: new FormControl("", [
         Validators.required
       ]),
-      surname: new FormControl("", [
+      lastname: new FormControl("", [
         Validators.required
       ]),
       email: new FormControl("", [
-        Validators.required
+        Validators.required,
+        Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
       ]),
       image: new FormControl("", [
         Validators.required
@@ -29,6 +30,14 @@ export class NewuserComponent {
 
   saveDataForm() {
     console.log(this.newUserForm.value);
+    this.newUserForm.reset();
+  }
+
+  checkControl(pControlName: string, pError: string): boolean {
+    if(this.newUserForm.get(pControlName)?.hasError(pError) && this.newUserForm.get(pControlName)?.touched){
+      return true;
+    }
+    return false;
   }
 
 }
