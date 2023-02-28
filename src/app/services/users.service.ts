@@ -26,5 +26,10 @@ export class UsersService {
     this.userObject = lastValueFrom(this.httpClient.get<any>(this.apiUrl+`/${pId}`));
     return this.userObject;
   }
+
+  postUser(pNewUser: any) {
+    //COMPROBAR SI ESTO ESTÁ BIEN
+    return this.apiObject = lastValueFrom(this.httpClient.post<any>(this.apiUrl, pNewUser));
+  }
   
 }

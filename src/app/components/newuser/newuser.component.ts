@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
+import { UsersService } from 'src/app/services/users.service';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-newuser',
@@ -10,7 +12,7 @@ export class NewuserComponent {
 
   newUserForm: FormGroup
 
-  constructor() {
+  constructor(private usersService: UsersService) {
     this.newUserForm = new FormGroup({
       name: new FormControl("", [
         Validators.required
@@ -30,6 +32,8 @@ export class NewuserComponent {
 
   saveDataForm() {
     console.log(this.newUserForm.value);
+    //  COMPROBAR SI ESTO ESTÁ BIEN
+    this.usersService.postUser(this.newUserForm.value);
     this.newUserForm.reset();
   }
 
