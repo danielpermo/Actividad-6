@@ -11,11 +11,12 @@ export class HomeComponent implements OnInit {
 
   myUsers: any = {}
   myUsersArr: User[] = []
+  page: number = 1
 
   constructor(private usersService: UsersService) { }
 
   async ngOnInit() {
-    this.myUsers = await this.usersService.getUsers();
+    this.myUsers = await this.usersService.getUsers(this.page);
     this.myUsersArr = this.myUsers.results;
   }
 
