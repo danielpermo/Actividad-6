@@ -23,7 +23,7 @@ export class UsersService {
   }
 
   getUserbyId(pId: string): Promise<any> {
-    this.userObject = lastValueFrom(this.httpClient.get<any>(this.apiUrl+`/${pId}`));
+    this.userObject = lastValueFrom(this.httpClient.get<User>(this.apiUrl+`/${pId}`));
     return this.userObject;
   }
 
