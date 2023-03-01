@@ -9,7 +9,7 @@ import { lastValueFrom, Observable } from 'rxjs';
 export class UsersService {
 
 
-  private apiUrl: string = "https://peticiones.online/api/users"
+  private apiUrl: string = "https://peticiones.online/api/users/"
   apiObject: any = {}
   userObject: any = {}
 
