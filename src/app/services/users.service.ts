@@ -17,8 +17,8 @@ export class UsersService {
 
   }
   
-  getUsers(): Promise<any> {
-    this.apiObject = lastValueFrom(this.httpClient.get<any>(this.apiUrl));
+  getUsers(pPage: number = 1): Promise<any> {
+    this.apiObject = lastValueFrom(this.httpClient.get<any>(`${this.apiUrl}?page=${pPage}`));
     return this.apiObject;
   }
 
