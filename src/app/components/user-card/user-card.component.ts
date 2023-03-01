@@ -7,7 +7,7 @@ import { User } from 'src/app/interfaces/user.interface';
   styleUrls: ['./user-card.component.css']
 })
 export class UserCardComponent implements OnInit {
-  @Input() myUser: User | any;
+  @Input() myUser!: User;
 
   ngOnInit(): void {
     
