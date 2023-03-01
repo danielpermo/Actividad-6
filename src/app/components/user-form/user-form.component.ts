@@ -47,19 +47,10 @@ export class UserFormComponent {
     this.title = "ACTUALIZAR USUARIO";
     this.buttonName = "Actualizar";
     this.UserForm = new FormGroup({
-      name: new FormControl(this.myUser.first_name, [
-        Validators.required
-      ]),
-      lastname: new FormControl(this.myUser.last_name, [
-        Validators.required
-      ]),
-      email: new FormControl(this.myUser.email, [
-        Validators.required,
-        Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
-      ]),
-      image: new FormControl(this.myUser.image, [
-        Validators.required
-      ])
+      name: new FormControl(this.myUser.first_name, []),
+      lastname: new FormControl(this.myUser.last_name, []),
+      email: new FormControl(this.myUser.email, []),
+      image: new FormControl(this.myUser.image, [])
     }, []);
   }
   
