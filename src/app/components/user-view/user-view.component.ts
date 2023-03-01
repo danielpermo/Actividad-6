@@ -13,7 +13,7 @@ export class UserViewComponent implements OnInit{
   
   constructor(private activatedRoute: ActivatedRoute, private usersService: UsersService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.activatedRoute.params.subscribe(async (params: any) => {
       let pId: string = params['userId']
       this.myUser = await this.usersService.getUserbyId(pId);

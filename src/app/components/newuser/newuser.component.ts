@@ -33,7 +33,7 @@ export class NewuserComponent {
   saveDataForm() {
     console.log(this.newUserForm.value);
     //  COMPROBAR SI ESTO ESTÁ BIEN
-    this.usersService.postUser(this.newUserForm.value);
+    this.usersService.createUser(this.newUserForm.value);
     this.newUserForm.reset();
   }
 

@@ -27,9 +27,9 @@ export class UsersService {
     return this.userObject;
   }
 
-  postUser(pNewUser: any) {
+  createUser(pUser: any) {
     //COMPROBAR SI ESTO ESTÁ BIEN
-    return this.apiObject = lastValueFrom(this.httpClient.post<any>(this.apiUrl, pNewUser));
+    return lastValueFrom(this.httpClient.post<User>(this.apiUrl, pUser));
   }
   
 }

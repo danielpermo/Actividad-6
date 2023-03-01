@@ -1,5 +1,5 @@
 <h1 class="mb-5">{{title}}</h1>
-<form [formGroup]="UserForm" (ngSubmit)="saveDataForm()">
+<form novalidate [formGroup]="UserForm" (ngSubmit)="getDataForm()">
   <div class="row mb-3">
     <label for="name" class="col-sm-2 col-form-label">Nombre (*)</label>
     <div class="col-sm-10">
