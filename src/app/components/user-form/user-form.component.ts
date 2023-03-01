@@ -39,15 +39,28 @@ export class UserFormComponent {
       this.pId=params['userId']
     })
     this.myUser = await this.usersService.getUserbyId(this.pId);
-  }
-
-  dataForm(){
-    if(this.pId === ""){
+    console.log(this.pId)
+    if(this.pId === "undefined"){
       this.title = "NUEVO USUARIO";
       this.buttonName = "Guardar";
     }
     this.title = "ACTUALIZAR USUARIO";
     this.buttonName = "Actualizar";
+    this.UserForm = new FormGroup({
+      name: new FormControl(this.myUser.first_name, [
+        Validators.required
+      ]),
+      lastname: new FormControl(this.myUser.last_name, [
+        Validators.required
+      ]),
+      email: new FormControl(this.myUser.email, [
+        Validators.required,
+        Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
+      ]),
+      image: new FormControl(this.myUser.image, [
+        Validators.required
+      ])
+    }, []);
   }
   
   checkControl(pControlName: string, pError: string): boolean {
@@ -61,6 +74,7 @@ export class UserFormComponent {
   saveDataForm() {
     console.log(this.UserForm.value);
     //  COMPROBAR SI ESTO ESTÁ BIEN
+    alert("Usario registrado con éxito.")
     this.usersService.postUser(this.UserForm.value);
     this.UserForm.reset();
   }
