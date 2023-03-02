@@ -70,7 +70,6 @@ export class UserFormComponent {
   
   async getDataForm() {
     let user: User = this.UserForm.value;
-    console.log(user)
     let response = await this.usersService.createUser(user);
     if(response) {
       alert("Usario registrado con éxito.");

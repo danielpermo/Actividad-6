@@ -20,5 +20,10 @@ export class UserViewComponent implements OnInit{
     })
   }
 
+  async deleteUser(pId: string) {
+    let response = await this.usersService.deleteUser(pId);
+    console.log(response);  
+  }
+
 
 }
