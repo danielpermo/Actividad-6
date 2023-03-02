@@ -28,8 +28,15 @@ export class UsersService {
   }
 
   createUser(pUser: any) {
-    //COMPROBAR SI ESTO ESTÁ BIEN
     return lastValueFrom(this.httpClient.post<User>(this.apiUrl, pUser));
+  }
+
+  updateUser(pUpdate: string) {
+    return lastValueFrom(this.httpClient.put<User>(this.apiUrl, pUpdate));
+  }
+
+  deleteUser(pId: string) {
+    return lastValueFrom(this.httpClient.delete<User>(this.apiUrl+`/${pId}`));
   }
   
 }
