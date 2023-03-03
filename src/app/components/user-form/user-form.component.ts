@@ -26,7 +26,7 @@ export class UserFormComponent {
       ]),
       email: new FormControl("", [
         Validators.required,
-        Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
+        Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
       ]),
       image: new FormControl("", [
         Validators.required
@@ -73,7 +73,6 @@ export class UserFormComponent {
       try {
         let user: User = this.UserForm.value;
         let response = await this.usersService.updateUser(user);
-        console.log(response)
         if(response.id) {
           alert("Usario actualizado con éxito.");
           this.UserForm.reset();
