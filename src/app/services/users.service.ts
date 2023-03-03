@@ -31,8 +31,8 @@ export class UsersService {
     return lastValueFrom(this.httpClient.post<User>(this.apiUrl, pUser));
   }
 
-  updateUser(pUpdate: string) {
-    return lastValueFrom(this.httpClient.put<User>(this.apiUrl, pUpdate));
+  updateUser(pUser: User) {
+    return lastValueFrom(this.httpClient.put<User>(this.apiUrl+`${pUser._id}`, pUser));
   }
 
   deleteUser(pId: string) {

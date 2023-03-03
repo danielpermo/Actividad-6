@@ -12,9 +12,8 @@ import { UsersService } from 'src/app/services/users.service';
 export class UserFormComponent {
 
   UserForm: FormGroup
-  pId: string = "";
-  myUser: any = {};
-  title: string = "NUEVO USUARIO";
+  myUser!: User;
+  title: string = "NUEVO";
   buttonName: string = "Guardar";
   
   constructor( private activatedRoute: ActivatedRoute, private usersService: UsersService ) {
@@ -35,30 +34,30 @@ export class UserFormComponent {
     }, []);
   }
   
-  async ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
-      this.pId=params['userId']
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(async params => {
+      let pId=params['userId']
+      if(pId){
+        this.title = "ACTUALIZAR";
+        this.buttonName = "Actualizar";
+        this.myUser = await this.usersService.getUserbyId(pId);
+        this.UserForm = new FormGroup({
+          id: new FormControl(this.myUser?._id, []),
+          name: new FormControl(this.myUser?.first_name, [
+            Validators.required
+          ]),
+          lastname: new FormControl(this.myUser?.last_name, [
+            Validators.required
+          ]),
+          email: new FormControl(this.myUser?.email, [
+            Validators.required
+          ]),
+          image: new FormControl(this.myUser?.image, [
+            Validators.required
+          ])
+        }, []);
+      }
     })
-    this.myUser = await this.usersService.getUserbyId(this.pId);
-    console.log(this.pId);
-    if(this.pId !== "undefined"){
-      this.title = "ACTUALIZAR USUARIO";
-      this.buttonName = "Actualizar";
-      this.UserForm = new FormGroup({
-        name: new FormControl(this.myUser.first_name, [
-          Validators.required
-        ]),
-        lastname: new FormControl(this.myUser.last_name, [
-          Validators.required
-        ]),
-        email: new FormControl(this.myUser.email, [
-          Validators.required
-        ]),
-        image: new FormControl(this.myUser.image, [
-          Validators.required
-        ])
-      }, []);
-    }
   }
   
   checkControl(pControlName: string, pError: string): boolean {
@@ -70,12 +69,18 @@ export class UserFormComponent {
   
   async getDataForm() {
     let user: User = this.UserForm.value;
-    let response = await this.usersService.createUser(user);
-    if(response) {
+    if(this.buttonName === "Actualizar") {
+      let response = await this.usersService.updateUser(user);
+      alert("Usario actualizado con éxito.");
+      console.log(response);
+    } else {
+      let response = await this.usersService.createUser(user);
       alert("Usario registrado con éxito.");
       this.UserForm.reset();
+      console.log(response);
+
     }
-    console.log(response);
+
   }
 }
 
