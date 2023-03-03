@@ -22,20 +22,20 @@ export class UsersService {
     return this.apiObject;
   }
 
-  getUserbyId(pId: string): Promise<any> {
+  getUserbyId(pId: string): Promise<User> {
     this.userObject = lastValueFrom(this.httpClient.get<User>(this.apiUrl+`/${pId}`));
     return this.userObject;
   }
 
-  createUser(pUser: any) {
+  createUser(pUser: any): Promise<any> {
     return lastValueFrom(this.httpClient.post<User>(this.apiUrl, pUser));
   }
 
-  updateUser(pUser: User) {
+  updateUser(pUser: User): Promise <User> {
     return lastValueFrom(this.httpClient.put<User>(this.apiUrl+`${pUser._id}`, pUser));
   }
 
-  deleteUser(pId: string) {
+  deleteUser(pId: string): Promise<User> {
     return lastValueFrom(this.httpClient.delete<User>(this.apiUrl+`/${pId}`));
   }
   

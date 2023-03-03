@@ -20,6 +20,7 @@ export class UserCardComponent implements OnInit {
 
   async deleteUser(pId: string) {
     let response = await this.usersService.deleteUser(pId);
-    console.log(response);  
+    console.log(response);
+    alert('Usuario borrado correctamente');
   }
 }
