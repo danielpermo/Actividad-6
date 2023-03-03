@@ -69,15 +69,33 @@ export class UserFormComponent {
   
   async getDataForm() {
     let user: User = this.UserForm.value;
-    if(this.buttonName === "Actualizar") {
-      let response = await this.usersService.updateUser(user);
-      alert("Usario actualizado con éxito.");
-      console.log(response);
+    if(user.id) {
+      try {
+        let user: User = this.UserForm.value;
+        let response = await this.usersService.updateUser(user);
+        console.log(response)
+        if(response.id) {
+          alert("Usario actualizado con éxito.");
+          this.UserForm.reset();
+          console.log(response);
+        }
+      }
+      catch (err) {
+        console.log(err);
+      }
     } else {
-      let response = await this.usersService.createUser(user);
-      alert("Usario registrado con éxito.");
-      this.UserForm.reset();
-      console.log(response);
+      try {
+        let user: User = this.UserForm.value;
+        let response = await this.usersService.createUser(user);
+        if(response.id) {
+          alert("Usario registrado con éxito.");
+          this.UserForm.reset();
+          console.log(response);
+        }
+      }
+      catch (err) {
+        console.log(err);
+      }
 
     }
 

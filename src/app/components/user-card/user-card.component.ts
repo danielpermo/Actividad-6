@@ -8,7 +8,7 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./user-card.component.css']
 })
 export class UserCardComponent implements OnInit {
-  @Input() myUser!: User;
+  @Input() myUser: User | any;
 
   constructor(private usersService: UsersService) {
 

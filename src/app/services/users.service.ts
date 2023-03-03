@@ -32,7 +32,7 @@ export class UsersService {
   }
 
   updateUser(pUser: User): Promise <User> {
-    return lastValueFrom(this.httpClient.put<User>(this.apiUrl+`${pUser._id}`, pUser));
+    return lastValueFrom(this.httpClient.put<User>(this.apiUrl+`${pUser.id}`, pUser));
   }
 
   deleteUser(pId: string): Promise<User> {
