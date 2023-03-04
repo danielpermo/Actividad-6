@@ -13,9 +13,6 @@ export class HomeComponent implements OnInit {
   currentPage: number = 1
   totalPages: number = 1
 
-  // page: number = 1
-  // active: boolean = false
-  // pagination: string = "1"
 
   constructor(private usersService: UsersService) { }
 
@@ -34,24 +31,5 @@ export class HomeComponent implements OnInit {
       console.log(error); 
     }
   }
-
-  // async getPage($event: any) {
-  //   this.pagination = $event.target.innerText;
-  //   if(this.pagination === "Next") {
-  //     this.page++;
-  //     this.active = !this.active;
-  //   }else if (this.pagination === "Previous"){
-  //     this.page--;
-  //     this.active = !this.active;
-  //   }else if(this.pagination === "1"){
-  //     this.page = 1;
-  //     this.active = false;
-  //   }else if(this.pagination === "2"){
-  //     this.page = 2
-  //     this.active = true
-  //   }
-  //   this.myUsers = await this.usersService.getUsers(this.page);
-  //   this.myUsersArr = this.myUsers.results;
-  // }
 
 }

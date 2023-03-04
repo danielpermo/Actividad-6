@@ -10,7 +10,21 @@
           <p class="card-text m-0"><small class="text-muted"><strong>Nombre usuario:</strong> {{myUser?.username}}</small></p>
           <p class="card-text m-0"><small class="text-muted"><strong>Email:</strong> {{myUser?.email}}</small></p>
           <div class="btn-group mt-4" role="group" aria-label="Basic outlined example">
-            <button (click)="deleteUser(myUser._id)" type="button" class="btn btn-outline-primary">Eliminar</button>
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar</button>
+          <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">¿Está seguro que quiere eliminar al usuario {{myUser.first_name}}?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button (click)="deleteUser(myUser._id)"  type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar </button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <button type="button" class="btn btn-outline-primary" [routerLink]="['/updateuser', myUser?._id]">Actualizar</button>
             <button type="button" class="btn btn-outline-primary" [routerLink]="['/home']">Volver al listado</button>
           </div>
