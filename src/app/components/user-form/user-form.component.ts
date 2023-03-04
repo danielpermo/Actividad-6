@@ -16,6 +16,7 @@ export class UserFormComponent {
   title: string = "NUEVO";
   buttonName: string = "Guardar";
   msg: string = "";
+  type: string = ""
   
   constructor( private activatedRoute: ActivatedRoute, private usersService: UsersService ) {
     this.UserForm = new FormGroup({
@@ -75,8 +76,8 @@ export class UserFormComponent {
         let user: User = this.UserForm.value;
         let response = await this.usersService.updateUser(user);
         if(response.id) {
-          this.msg = `El usario ${response.first_name} ${response.last_name} ha sido actualizado con éxito.`;
-          this.UserForm.reset();
+          this.msg = "El usario ha sido actualizado con éxito.";
+          this.type = 'success';
           console.log(response);
         }
       }
@@ -88,8 +89,8 @@ export class UserFormComponent {
         let user: User = this.UserForm.value;
         let response = await this.usersService.createUser(user);
         if(response.id) {
-          this.msg = `El usario ${response.first_name} ${response.last_name} ha sido registrado con éxito.`;
-          this.UserForm.reset();
+          this.msg = "El usario ha sido registrado con éxito.";
+          this.type = 'success';
           console.log(response);
         }
       }

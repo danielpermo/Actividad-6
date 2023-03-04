@@ -1,4 +1,5 @@
 import { Component, DoCheck, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notifications',
@@ -10,6 +11,9 @@ export class NotificationsComponent implements DoCheck {
   @Input() msg: string = "";
   notification: string = "";
   visible: boolean = false;
+  @Input() type: string = "";
+
+  constructor(private router: Router){}
 
   ngDoCheck(): void {
     if(this.msg !== ""){
@@ -18,4 +22,9 @@ export class NotificationsComponent implements DoCheck {
     }
   }
 
+  close() {
+    this.notification = "";
+    this.visible = false;
+    this.router.navigate(['/home']);
+  }
 }
