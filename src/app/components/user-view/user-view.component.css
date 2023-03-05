@@ -34,7 +34,14 @@
 	--bs-card-group-margin: 0.75rem;
 	word-wrap: break-word;
 }
+.card-text{
+	font-size: 1.2rem;
+}
 .border-primary {
 	--bs-border-opacity: 1;
 	border-color: #08214762 !important;
+}
+.card-body {
+	margin-left: 2rem;
+	margin-top: 7rem;
 }
