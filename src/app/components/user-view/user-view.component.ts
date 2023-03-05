@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-view',
@@ -21,10 +22,27 @@ export class UserViewComponent implements OnInit{
   }
 
   async deleteUser(pId: string) {
-    let response = await this.usersService.deleteUser(pId);
-    console.log(response); 
-    alert('Usuario borrado correctamente'); 
+    let response: any = await this.usersService.getUserbyId(pId);
+    
+    Swal.fire({
+      title: `¿Desea borrar el usuario ${response.first_name} ?`,
+      text: "¿Si lo haces, no podrás volver atrás!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#082147',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, borrar'
+    }).then(async(result) => {
+      if (result.isConfirmed) {
+        response = await this.usersService.deleteUser(response._id);
+        console.log(response);
+        
+        Swal.fire(
+          '¡Eliminado!',
+          `El usuario ${response.first_name} ha sido borrado correctamente`,
+          'success'
+        )
+      }
+    })
   }
-
-
 }
