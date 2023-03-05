@@ -25,8 +25,8 @@ export class UserViewComponent implements OnInit{
     let response: any = await this.usersService.getUserbyId(pId);
     
     Swal.fire({
-      title: `¿Desea borrar el usuario ${response.first_name} ?`,
-      text: "¿Si lo haces, no podrás volver atrás!",
+      title: `¿Desea borrar el usuario ${response.first_name}?`,
+      text: "Si lo haces, ¡no podrás volver atrás!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#082147',
